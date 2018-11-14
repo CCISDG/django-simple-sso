@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
+from django.conf import settings
 from django.conf.urls import url
-from django.contrib.auth import login
+from django.contrib.auth import login, get_user_model
 from django.contrib.auth.backends import ModelBackend
-from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.views.generic import View
 from itsdangerous import URLSafeTimedSerializer
@@ -17,6 +17,7 @@ from ..compat import (
     urlencode,
 )
 
+User = get_user_model()
 
 class LoginView(View):
     client = None
