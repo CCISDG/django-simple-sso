@@ -114,7 +114,7 @@ class Client(object):
 
     def build_user(self, user_data):
         try:
-            user = User.objects.get(username=user_data['username'])
+            user = User.objects.get(email=user_data['email'])
         except User.DoesNotExist:
             user = User(**user_data)
         user.set_unusable_password()

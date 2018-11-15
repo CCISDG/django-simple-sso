@@ -158,8 +158,8 @@ class Server(object):
             'email': user.email,
             'first_name': user.first_name,
             'last_name': user.last_name,
-            'is_staff': False,
-            'is_superuser': False,
+            'is_staff': user.is_staff,
+            'is_superuser': user.is_superuser,
             'is_active': user.is_active,
         }
         if extra_data:
