@@ -3,9 +3,9 @@ from simple_sso import __version__ as version
 
 
 setup(
-    name="django-simple-sso",
+    name="ccisdg-django-sso",
     version=version,
-    description="Simple SSO for Django",
+    description="Simple SSO for Django modified for ACE project",
     long_description=open('README.rst').read(),
     classifiers=[
         'Development Status :: 4 - Beta',
@@ -23,7 +23,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'itsdangerous',
-        'Django>=1.8,<2.1',
+        'Django>=1.11,<2.1',
         'webservices[django]',
     ],
     include_package_data=True,

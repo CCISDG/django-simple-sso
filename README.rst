@@ -1,9 +1,14 @@
+Special Notes
+==============
+To install this package, you should clone this repo, workon your virtual environment, and run "python setup.py install"
+
+
 django-simple-sso
 =================
 
 The latest version of this package supports:
 
-* Django >= 1.7
+* Django >= 1.11
 
 
 #######################################
