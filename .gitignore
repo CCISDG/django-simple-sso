@@ -1,7 +1,8 @@
 *.pyc
 .*
 /build/
-/dist/
+/dist/*
+!/dist/ccisdg-django-simple-sso-0.0.1.tar.gz
 *.egg-info
 /*env*/
 /htmlcov/

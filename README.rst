@@ -1,8 +1,7 @@
 Special Notes
 ==============
 To install this package, you should clone this repo, workon your virtual environment, and run 
-- "python setup.py build"
-- "python setup.py install"
+- "pip install dist/ccisdg-django-simple-sso-0.0.1.tar.gz"
 
 
 django-simple-sso
