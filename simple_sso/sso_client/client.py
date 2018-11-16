@@ -3,10 +3,11 @@ from django.conf import settings
 from django.conf.urls import url
 from django.contrib.auth import login, get_user_model
 from django.contrib.auth.backends import ModelBackend
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.views.generic import View
 from itsdangerous import URLSafeTimedSerializer
 from webservices.sync import SyncConsumer
+from django.contrib.auth.models import AnonymousUser
 
 from ..compat import (
     NoReverseMatch,
@@ -58,6 +59,8 @@ class AuthenticateView(LoginView):
         raw_access_token = request.GET['access_token']
         access_token = URLSafeTimedSerializer(self.client.private_key).loads(raw_access_token)
         user = self.client.get_user(access_token)
+        if user.is_anonymous:
+            return HttpResponseForbidden()
         user.backend = self.client.backend
         login(request, user)
         next = self.get_next()
@@ -115,10 +118,11 @@ class Client(object):
     def build_user(self, user_data):
         try:
             user = User.objects.get(email=user_data['email'])
+            user.set_unusable_password()
+            user.save()
         except User.DoesNotExist:
-            user = User(**user_data)
-        user.set_unusable_password()
-        user.save()
+            user = AnonymousUser()
+            # user = User(**user_data)
         return user
 
     def get_urls(self):

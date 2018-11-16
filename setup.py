@@ -3,7 +3,7 @@ from simple_sso import __version__ as version
 
 
 setup(
-    name="ccisdg-django-sso",
+    name="ccisdg-django-simple-sso",
     version=version,
     description="Simple SSO for Django modified for ACE project",
     long_description=open('README.rst').read(),

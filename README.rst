@@ -1,6 +1,8 @@
 Special Notes
 ==============
-To install this package, you should clone this repo, workon your virtual environment, and run "python setup.py install"
+To install this package, you should clone this repo, workon your virtual environment, and run 
+- "python setup.py build"
+- "python setup.py install"
 
 
 django-simple-sso
@@ -123,7 +125,7 @@ Authentication Request
 
     * ``200``: Everything went fine, the user is now logged in.
     * ``400``: Bad request (missing GET parameters).
-    * ``403``: Forbidden (invalid **Request Token**).
+    * ``403``: Forbidden (invalid **Request Token** or user's account does not exist in client's database).
 
 
 Auth Token Verification Request
@@ -192,6 +194,7 @@ On the server
 * Create an instance (potentially of a subclass) of
   ``simple_sso.sso_server.server.Server`` and include the return value of the 
   ``get_urls`` method on that instance into your url patterns.
+* Set the ``auth_view_name`` field of the server instance to point to your authentication view 
 
 
 On the client
